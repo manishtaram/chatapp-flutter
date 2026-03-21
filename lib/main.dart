@@ -1,6 +1,15 @@
+import 'package:app/Components/HomePage.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:app/Components/SplashScreen.dart';
+import 'package:app/Components/LoginWithEmail.dart';
+import 'package:app/Components/Signup.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
   runApp(ChatApp());
 }
 
@@ -10,10 +19,10 @@ class ChatApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Chat App',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: ThemeData(primarySwatch: Colors.blue),
+      home: SplashScreen(),
     );
   }
 }
