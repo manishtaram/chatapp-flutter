@@ -37,18 +37,15 @@ class _LoginWithGoogleState extends State<LoginWithGoogle> {
   }
 
   void login() async {
-    // Ensure initialized before proceeding
     if (!_isInitialized) {
       await _initializeGoogleSignIn();
     }
 
     try {
-      // v7: authenticate() replaces signIn()
       final GoogleSignInAccount googleUser = await _googleSignIn.authenticate(
         scopeHint: ['email'],
       );
 
-      // v7: Get the authorization client to retrieve the access token
       final authClient = _googleSignIn.authorizationClient;
       final authorization = await authClient.authorizationForScopes(['email']);
 
@@ -60,25 +57,22 @@ class _LoginWithGoogleState extends State<LoginWithGoogle> {
         accessToken: authorization.accessToken,
         idToken: googleUser
             .authentication
-            .idToken, // authentication is now sync in v7
+            .idToken, 
       );
 
-      // Sign in with Firebase
       await FirebaseAuth.instance.signInWithCredential(credential);
 
       if (!mounted) return;
 
-      // Navigate to your home/chat screen
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
           builder: (context) =>
-              ChatScreen(), // Added const for performance
+              ChatScreen(), 
         ),
       );
     } catch (e) {
       debugPrint("Login error: $e");
-
       if (!mounted) return;
       ScaffoldMessenger.of(
         context,
@@ -88,8 +82,6 @@ class _LoginWithGoogleState extends State<LoginWithGoogle> {
 
   @override
   Widget build(BuildContext context) {
-    // Note: If UiHelper class uses lowercase 'u', keep it.
-    // Usually, classes start with Uppercase (UiHelper).
     return Uihelper.CustomIconbutton(
       login,
       "Sign In with Google",
