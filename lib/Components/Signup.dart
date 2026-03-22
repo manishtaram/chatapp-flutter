@@ -1,10 +1,10 @@
-import 'package:app/Components/HomePage.dart';
+// import 'package:app/Components/HomePage.dart';
 import 'package:app/Components/LoginWithEmail.dart';
 import 'package:app/Components/LoginWithGoogle.dart';
 import 'package:app/Components/UiHelper.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:app/Components/UiHelper.dart';
+// import 'package:app/Components/UiHelper.dart';
 
 class SignUpPage extends StatefulWidget {
   @override

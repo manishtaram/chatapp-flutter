@@ -1,3 +1,4 @@
+import 'package:app/Components/chat_user_card.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -36,24 +37,12 @@ class ChatScreen extends StatelessWidget {
         ],
       ),
       body: ListView.builder(
-        padding: EdgeInsets.all(8),
-        itemCount: messages.length,
+        itemCount: 16,
+        padding: EdgeInsets.only(top: 10),
+        physics: ScrollPhysics(),
         itemBuilder: (context, index) {
-          final message = messages[index];
-          return Align(
-            alignment: message["isMe"]
-                ? Alignment.centerRight
-                : Alignment.centerLeft,
-            child: Container(
-              margin: EdgeInsets.symmetric(vertical: 4),
-              padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-              decoration: BoxDecoration(
-                color: message["isMe"] ? Colors.blue[200] : Colors.grey[300],
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Text(message["text"], style: TextStyle(fontSize: 16)),
-            ),
-          );
+          
+          return const ChatUserCard();
         },
       ),
     );

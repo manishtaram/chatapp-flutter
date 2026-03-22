@@ -1,6 +1,6 @@
 import 'package:app/Components/checkUser.dart';
 import 'package:flutter/material.dart';
-import 'package:app/Components/HomePage.dart';
+// import 'package:app/Components/HomePage.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
